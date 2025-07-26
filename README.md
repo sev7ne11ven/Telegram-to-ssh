@@ -1,118 +1,104 @@
-Telegram SSH Control Bot for Ubuntu
-A simple, secure, and powerful Python Telegram bot to manage and monitor your Ubuntu server using SSH commands. This bot runs as a systemd service, starts automatically on boot, and is installed via a single, convenient auto-install script.
 
-✨ Features
-System Commands: Execute critical system commands with confirmation.
+---
 
-Reboot
+# 🛡️ Telegram SSH Bot Installer
 
-Shutdown
+Easily set up a Telegram bot to monitor and control your Ubuntu server via Telegram commands like `/status`, `/shutdown`, `/reboot`, and more.
 
-Suspend
+---
 
-Live Server Monitoring: Get real-time server status with a clean, visual interface.
+## 🔧 How to Use This Installer
 
-CPU Usage (with text-based graph)
+### 1. Get Your Telegram Bot Token and User ID
 
-RAM Usage (with text-based graph)
+* **Bot Token**:
+  Talk to [@BotFather](https://t.me/BotFather) on Telegram.
+  Create a new bot, and it will give you a **token**.
 
-Disk Usage (with text-based graph)
+* **User ID**:
+  Talk to [@userinfobot](https://t.me/userinfobot).
+  It will show you your **numeric Telegram user ID**.
 
-CPU Temperature
+---
 
-Network I/O Statistics
+### 2. Save the Script
 
-Health & Diagnostics:
+Copy the entire code block from `install_bot.sh` and save it to a file on your **Ubuntu server**.
 
-Daily Health Check: Automatically performs a health check on startup.
+```bash
+nano install_bot.sh
+# Paste the script and save (Ctrl+O, Enter, Ctrl+X)
+```
 
-Disk Health: Checks S.M.A.R.T. status of all physical drives.
+---
 
-Process Monitoring: View the top 5 memory-consuming processes.
+### 3. Make it Executable
 
-Uptime: Check how long the server has been running.
+Run this command in your terminal to make the script executable:
 
-Secure:
-
-The bot will only respond to the Telegram User ID you specify during installation.
-
-Uses passwordless sudo for specific, predefined commands only.
-
-Easy Installation: A single auto-install script handles all dependencies, configuration, and service setup.
-
-Interactive UI: Uses Telegram's inline keyboard buttons for quick and easy command access.
-
-📋 Requirements
-An Ubuntu Server (20.04 LTS or newer is recommended).
-
-sudo or root access on the server.
-
-A Telegram account.
-
-🚀 Installation
-The entire process is automated with a single script.
-
-1. Get Your Telegram Credentials
-You will need two pieces of information from Telegram before running the installer.
-
-Bot Token:
-
-Open Telegram and search for the @BotFather.
-
-Start a chat and send /newbot.
-
-Follow the prompts to name your bot.
-
-@BotFather will give you a unique token. Save this token.
-
-User ID:
-
-Search for the @userinfobot.
-
-Start a chat and it will immediately reply with your user information, including your ID. Save this ID.
-
-2. Run the Installer Script
-Now, connect to your Ubuntu server via SSH and follow these steps.
-
-Download the Installer:
-Save the install_bot.sh script from this repository to your server.
-
-Make the Script Executable:
-Open a terminal on your server and run:
-
+```bash
 chmod +x install_bot.sh
+```
 
-Execute the Installer:
-Run the script with sudo. It needs elevated privileges to install packages and set up the system service.
+---
 
+### 4. Run the Installer
+
+Execute the script with `sudo` since it needs to install packages and create system files:
+
+```bash
 sudo ./install_bot.sh
+```
 
-Follow the Prompts:
-The script will ask for the Bot Token, your User ID, and a Server Name/Location. Enter the information you gathered earlier.
+---
 
-That's it! The script will handle everything else. Once it finishes, the bot is running.
+### 5. Follow the Prompts
 
-🤖 Usage
-Open Telegram and start a chat with the bot you created.
+The script will ask for:
 
-Send the /start or /help command.
+* Your **Bot Token**
+* Your **Telegram User ID**
+* A **nickname** or label for your server
 
-The bot will reply with a welcome message and an interactive keyboard. Use the buttons to manage your server.
+Enter the information carefully when prompted.
 
-🔧 Troubleshooting
-If the bot doesn't respond, you can check its status and logs directly on the server.
+---
 
-Check Service Status:
+### ✅ After Installation
 
-sudo systemctl status telegram-ssh-bot.service
+* Your bot will now run **in the background**
+* It will automatically **start on boot** using `systemd`
+* You can now go to Telegram, open your bot, and send:
 
-View Live Logs:
+```plaintext
+/start
+```
 
-sudo journalctl -u telegram-ssh-bot.service -f
+You’ll see an **inline keyboard** and can begin managing your server.
 
-Restart the Bot:
+---
 
-sudo systemctl restart telegram-ssh-bot.service
+## 🔁 Available Commands
 
-🔒 Security Note
-This bot is designed to be run by a trusted user. The script configures sudo to allow the user running the bot to execute specific power-related commands (reboot, shutdown, suspend, smartctl) without a password. Ensure you understand the security implications of this before proceeding. The bot will only respond to the ALLOWED_USER_ID specified during installation.
+| Command     | Description                 |
+| ----------- | --------------------------- |
+| `/start`    | Show the main keyboard      |
+| `/status`   | Server usage + status graph |
+| `/shutdown` | Shut down the server        |
+| `/reboot`   | Reboot the server           |
+| `/suspend`  | Suspend the server          |
+| `/help`     | Show help text              |
+
+---
+
+## 💡 Notes
+
+* Only **one authorized user** (your user ID) can access the bot.
+* Works on **Ubuntu 20.04+**.
+* Requires Python 3.8+ and `python-telegram-bot`.
+
+---
+
+Feel free to contribute or customize the bot after installation. Happy self-hosting! 🚀
+
+---
