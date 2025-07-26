@@ -23,12 +23,8 @@ Easily set up a Telegram bot to monitor and control your Ubuntu server via Teleg
 
 ### 2. Save the Script
 
-Copy the entire code block from `install_bot.sh` and save it to a file on your **Ubuntu server**.
+Download the `install_bot.sh` and save it to a file on your **Ubuntu server**.
 
-```bash
-nano install_bot.sh
-# Paste the script and save (Ctrl+O, Enter, Ctrl+X)
-```
 
 ---
 
