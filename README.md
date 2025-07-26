@@ -33,7 +33,7 @@ Download the `install_bot.sh` and save it on your **Ubuntu server**.
 Run this command in your terminal to make the script executable:
 
 ```bash
-chmod +x install_bot.sh
+sudo chmod +x install_bot.sh
 ```
 
 ---
