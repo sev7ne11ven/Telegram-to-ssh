@@ -1,7 +1,7 @@
 
 ---
 
-# 🛡️ Telegram SSH Bot Installer
+# 🛡️ Telegram SSH Bot 
 
 Easily set up a Telegram bot to monitor and control your Ubuntu server via Telegram commands like `/status`, `/shutdown`, `/reboot`, and more.
 
